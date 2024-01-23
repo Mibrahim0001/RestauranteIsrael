@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"israel","c":"RestauranteIsrael","l":"addCalamares(int)"},{"p":"israel","c":"RestauranteIsrael","l":"addPatatas(int)"},{"p":"israel","c":"RestauranteIsrael","l":"c"},{"p":"israel","c":"RestauranteIsrael","l":"p"},{"p":"israel","c":"RestauranteIsrael","l":"RestauranteIsrael(int, int)","u":"%3Cinit%3E(int,int)"}];updateSearchResults();

@@ -1,82 +1,73 @@
 package israel;
+
 /**
- * La clase RestauranteIsrael gestiona los comensales 
- * del restaurante Israel y el srock de su almacén.
+ * La clase RestauranteIsrael gestiona los comensales del restaurante Israel
  * 
- * @author Muhammad Ibarhim
+ * @author Muhammad Ibrahim
  * @version 1.0
  */
 
 public class RestauranteIsrael {
-	
+	/** Representa el número de patatas */
+	public int p;
+	/** Representa el número de calamares */
+	public int c;
+
 	/**
-	 * Representa la cantidad de patatas
-	 */
-	public int patatas;
-	
-	/**
-	 * Representa la cantidad de calamares
-	 */
-	public int calamares;
-	private static RestauranteIsrael miRestaurante;
-	
-	/**
-	 * Constructor de la clase RestauranteIsrael con dos parametros de entrada
-	 * @param a Representa la cantidad de patatas iniciales
-	 * @param b Representa la cantidad de calameres iniciales
+	 * Contructor de la clase RestauranteIsrael
+	 * 
+	 * @param a Indica el número de patatas que hay en el stock
+	 * @param b Indica el número de calamares que hay en el stock
 	 */
 	public RestauranteIsrael(int a, int b) {
-		this.setPatatas(a);
-		this.setCalamares(b);
+		this.p = a;
+		this.c = b;
 	}
-	
-	// Metodo por el que se calcula el numero de comensales en funcion del stock de patatas
-	private int cantP() {
-		int a = this.getPatatas() * 3;
+
+	/*
+	 * Método por el que se conoce el número máximo de comensales en función del
+	 * número de patatas en stock
+	 * 
+	 * Devuelve el número de comensales
+	 */
+	int cantP() {
+		int a = this.p * 3;
 		return a;
 	}
-	
-	// Metodo por el que se calcula el numero de comensales en funcion del stock de calamares
-	private int cantC() {
-		int ch = this.getCalamares() * 6;
+	/*
+	 * Método por el que se conoce el número máximo de comensales en función del
+	 * número de calamares en stock
+	 * 
+	 * Devuelve el número de comensales
+	 */
+	int cantC() {
+		int ch = this.c * 6;
 		return ch;
 	}
-	
+
 	/**
-	 * Metodo por el que se añade una cantidad de calamares al stock del restaurantes.
-	 * @param c Representa la cantidad de calamares que se quiere añadir al stock.
+	 * Método por el que se añade la cantidad de calamares recibidos en un pedido
+	 * 
+	 * @param c cantidad de calamares a añadir al stock
 	 */
 	public void addCalamares(int c) {
-		this.setCalamares(this.getCalamares() + c);
+		this.c = this.c + c;
 	}
-	
+
 	/**
-	 * Metodo por el que se añade una cantidad de patatas al stock del restaurantes.
-	 * @param d Representa la cantidad de patatas que se quiere añadir al stock.
+	 * Método por el que se añade la cantidad de patatas recibidos en un pedido
+	 * 
+	 * @param d cantidad de patatas a añadir al stock
 	 */
 	public void addPatatas(int d) {
-		this.setPatatas(this.getPatatas() + d);
+		this.p = this.p + d;
 	}
-	
-	/**
-	 * @hidden
-	 */
+
+	/** @hidden */
 	public static void main(String[] args) {
-		miRestaurante = new RestauranteIsrael(50, 60);
-		System.out.println("Cantidad de calamares: " + miRestaurante.getCalamares());
-		System.out.println("Cantidad de patatas: " + miRestaurante.getPatatas());
-		calculaComensales(miRestaurante);
-		miRestaurante.addCalamares(1);
-		miRestaurante.addPatatas(80);
-		System.out.println("\nPedido Recibido!! Stock actual: ");
-		System.out.println(miRestaurante.getPatatas() + " patatas.\n" + miRestaurante.getCalamares() + " calamares");
-		calculaComensales(miRestaurante);
-	}
-	
-	/* Metodo por el que se calcula la cantidad de clientes a los que se puede dar de comer 
-	 * En el restaurante Israel en funcion del stock de productos
-	 */
-	private static void calculaComensales(RestauranteIsrael r1) {
+		RestauranteIsrael r1 = new RestauranteIsrael(50, 60);
+		System.out.println("Cantidad de calamares: " + r1.c);
+		System.out.println("Cantidad de patatas: " + r1.p);
 		if (r1.cantP() <= r1.cantC()) {
 			System.out.println(
 					"\nIsrael puede dar de comer a " + r1.cantP() + " personas con raciones de patatas máximo");
@@ -84,33 +75,16 @@ public class RestauranteIsrael {
 			System.out.println(
 					"\nIsrael puede dar de comer a " + r1.cantC() + " personas con raciones de calamares máximo");
 		}
-	}
-	
-	/**
-	 * @hidden
-	 */
-	public int getPatatas() {
-		return patatas;
-	}
-
-	/**
-	 * @hidden
-	 */
-	public void setPatatas(int patatas) {
-		this.patatas = patatas;
-	}
-
-	/**
-	 * @hidden
-	 */
-	public int getCalamares() {
-		return calamares;
-	}
-
-	/**
-	 * @hidden
-	 */
-	public void setCalamares(int calamares) {
-		this.calamares = calamares;
+		r1.addCalamares(1);
+		r1.addPatatas(80);
+		System.out.println("\nPedido Recibido!! Stock actual: ");
+		System.out.println(r1.p + " patatas.\n" + r1.c + " calamares");
+		if (r1.cantP() <= r1.cantC()) {
+			System.out.println(
+					"\nIsrael puede dar de comer a " + r1.cantP() + " personas con raciones de patatas máximo");
+		} else {
+			System.out.println(
+					"\nIsrael puede dar de comer a " + r1.cantC() + " personas con raciones de calamares máximo");
+		}
 	}
 }
